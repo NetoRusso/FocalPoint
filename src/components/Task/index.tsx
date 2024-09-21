@@ -37,14 +37,14 @@ const Task = () => {
 
   useEffect(() => {
     const storedTasks = localStorage.getItem('tasks');
-    if (storedTasks && JSON.parse(storedTasks).length <= 2) {
-      console.log('LS: ', storedTasks, 'exemplo: ', exempleTasks);
+    if (!storedTasks) {
       setTasks(exempleTasks);
-      localStorage.setItem('tasks', JSON.stringify(exempleTasks)); 
+      localStorage.setItem('tasks', JSON.stringify(exempleTasks));
+      setStart(true);
     } else if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
+      setStart(true);
     }
-    setStart(true); 
   }, []);
 
   
