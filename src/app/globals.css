@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-black-opacity: #0000008A;
+  --color-blue-light: #E7EEFB;
+  --color-blue-light-hover: #d5e1f8;
+  --color-border: #EAECF0;
+  
+  --color-linear-gradient-blue: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+  --color-linear-gradient-blue-inverse: linear-gradient(90deg, #53C0F0 0%, #0796D3 68.65%);
+  --color-linear-gradient-red:  linear-gradient(90deg, #D30707 0%, #F05353 68.65%);
+  --color-linear-gradient-red-inverse:  linear-gradient(90deg, #F05353 0%, #D30707 68.65%);
+
+  --shadow-standard: 0px 24px 48px -12px #1018282E;
+
+  --font-standard: "Inter Tight", sans-serif;
+  --font-weight-title: 500;
+  --font-weight-body: 400;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow: hidden;
+  min-width: 320px;
+  height: 100vh;
+}
+
+body {
+  color: var(--color-black);
+  background: var(--color-white);
+  font-family: var(--font-standard);
+  font-weight: var(--font-weight-body);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Especificos */
+
+
+.principal { 
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
