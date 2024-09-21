@@ -1,0 +1,144 @@
+.list {
+  width: clamp(17rem, 13.8214rem + 15.8929vw, 28.125rem);
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 16px;
+
+  overflow-y: auto;
+  scrollbar-width: 4px;
+  list-style-type: none;
+
+
+  &::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: #E7EEFB;
+  }
+
+  &::-webkit-scrollbar-track:hover {
+    background-color: #D5E1F8;
+  }
+
+  &::-webkit-scrollbar-track:active {
+    background-color: #D5E1F8;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #0796D3;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #53C0F0;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background-color: #0796D3;
+  }
+
+
+
+  .item {
+    width: 95%;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px dotted #D7DDE9;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+
+    div {
+      width: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      label {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        cursor: pointer;
+
+        input {
+          width: 24px;
+          height: 24px;
+          border: transparent;
+          background-color: transparent;
+          outline: none;
+          opacity: 1;
+          cursor: pointer;
+
+          &::before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #A0DCF6;
+            border: #0796D3 solid 1px;
+            border-radius: 3px;
+            outline: none;
+            background-image: url('../../assets/Icon.png');
+            background-size: 16px 16px;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+          }
+
+          &:checked::before {
+            opacity: 1;
+
+          }
+
+        }
+
+      }
+    }
+
+    &:hover {
+      border: none;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+
+      &:hover {
+        cursor: pointer;
+        filter: sepia(50%);
+        transition: all 300ms ease-in-out;
+      }
+    }
+
+    
+  }
+  .itemCompleted { 
+
+    div{
+      text-decoration: line-through;
+      color: var(--color-black-opacity);
+
+      
+    }
+
+
+  }
+}
+
+.finished { 
+  height: 128px;
+}
