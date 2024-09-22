@@ -87,20 +87,22 @@ const Task = () => {
     <section aria-label="Tarefas do dia" className={Style.task}>
       <div className={Style.taskContainer}>
         <div className={Style.taskActive}>
-          <h3>Suas tarefas de hoje</h3>
+          <h3 data-testid="titulo-tarefas-hoje">Suas tarefas de hoje</h3>
           <List
             list={tasks.filter(task => !task.completed)}
             operation={runArray}
             onDeleteTask={onDeleteTask}
+            dataTestid='lista-tarefas'
           />
         </div>
         <div className={Style.taskInactive}>
-          <h3>Tarefas finalizadas</h3>
+          <h3 data-testid="titulo-tarefas-finalizadas">Tarefas finalizadas</h3>
           <List
             list={tasks.filter(task => task.completed)}
             operation={runArray}
             onDeleteTask={onDeleteTask}
             classe='finished'
+            dataTestid='lista-tarefas-finalizadas'
           />
         </div>
       </div>
@@ -108,6 +110,7 @@ const Task = () => {
         classe='standard'
         type='button'
         onClick={() => { setShowModal(true) }}
+        dataTestid='btn-nova-tarefa'
       >
         Adicionar nova tarefa
       </Button>
