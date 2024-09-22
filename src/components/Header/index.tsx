@@ -13,7 +13,7 @@ const Header = ({ userName }: Props) => {
     <header className={Style.header}>
       <div className={Style.container}>
         <Image src={logo} alt="Logo do aplicativo FocalPoint" className={Style.logo} />
-        <h2 className={Style.title}>Bem vindo de volta, <span>{userName}</span></h2>
+        <h2 data-testid="saudacao-usuario" className={Style.title}>Bem vindo de volta, <span>{userName}</span></h2>
         <Calendar />
       </div>
       <hr className={Style.hr} />
