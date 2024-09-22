@@ -12,17 +12,18 @@ interface Props {
   list: ITask[];
   operation: (id: string) => void;
   onDeleteTask: (id: string) => void;
-  classe?: string; 
+  classe?: string;
+  dataTestid?: string; 
 }
 
-const List = ({ list, operation, onDeleteTask, classe }: Props) => {
+const List = ({ list, operation, onDeleteTask, classe, dataTestid }: Props) => {
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [taskIdToDelete, setTaskIdToDelete] = useState<string>('');
 
 
   return (
-    <ul className={classNames({
+    <ul data-testid={dataTestid} className={classNames({
       [Style['list']]: true,
       [Style['finished']]: classe === 'finished',
     })}>
@@ -31,8 +32,9 @@ const List = ({ list, operation, onDeleteTask, classe }: Props) => {
         <li key={item.id} className={classNames({
           [Style['item']]: true,
           [Style['itemCompleted']]: item.completed,
-
-        })}>
+        })}
+        data-testid='item-list'
+        >
           <div>
             <label htmlFor='complete'>
               <input name='complete' id='complete' type='checkbox' checked={item.completed? true : false} onChange={() => operation(item.id)} />
