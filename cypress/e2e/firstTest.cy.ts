@@ -8,10 +8,16 @@ const calendario = (): string => {
 }
 
 describe('teste da aplicação FocalPoint', () => {
+
+  beforeEach(() => {
+    cy.visit('http://localhost:3000');
+    localStorage.setItem('user', 'Marcus'); 
+  });
+
   it('header-saudacao', () => {
     cy.viewport(1440, 768);
     cy.visit('http://localhost:3000');
-
+    
     cy.get('[data-testid="saudacao-usuario"]')
       .should("exist")
       .should('contain', 'Bem vindo de volta, Marcus');
