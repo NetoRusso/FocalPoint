@@ -18,7 +18,7 @@ const Calendar = () => {
   return (
     <div>
       
-      <p>{date}</p>
+      <p data-testid="calendario">{date}</p>
     </div>
   )
 };
