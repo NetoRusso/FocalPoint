@@ -7,9 +7,10 @@ interface Props {
   type?: 'button' | 'submit' | 'reset' | undefined,
   classe?: 'standard' | 'miniStandard' | 'delete' | 'cancel' |undefined,
   onClick?: () => void,
+  dataTestid?: string,
 }
 
-const Button = ({ children, type, onClick, classe }: Props) => {
+const Button = ({ children, type, onClick, classe, dataTestid }: Props) => {
   return (
     <button onClick={onClick} type={type} className={classNames({
       [Style['button']]: true,
@@ -17,7 +18,9 @@ const Button = ({ children, type, onClick, classe }: Props) => {
       [Style['buttonMiniStandard']]: classe === 'miniStandard',
       [Style['buttonDelete']]: classe === 'delete',
       [Style['buttonCancel']]: classe === 'cancel',
-    })}>
+    })}
+      data-testid={dataTestid}
+    >
       {children}
     </button>
   )
