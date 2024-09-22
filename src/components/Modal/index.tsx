@@ -7,6 +7,7 @@ interface Props {
   onClose: () => void;
   onAddTask?: (title: string) => void ;
   onDeleteTask?: () => void;
+
 }
 
 const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: Props) => {
@@ -16,7 +17,7 @@ const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: P
 
   return (
     classe === 'newTask' ?
-      <div className={Style.modalContainer}>
+      <div className={Style.modalContainer} data-testid='modal-criar-tarefa'>
         <div className={Style.modal} />
         <div className={Style.modalContent}>
           <h3>Nova Tarefa</h3>
@@ -47,6 +48,7 @@ const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: P
               <Button
                 classe='miniStandard'
                 type='submit'
+                dataTestid='btn-criar-tarefa'
               >
                 Adicionar
               </Button>
@@ -55,11 +57,11 @@ const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: P
         </div>
       </div>
       : classe === 'deleteTask' ?
-        <div className={Style.modalContainer}>
+        <div className={Style.modalContainer} data-testid='modal-deletar-tarefa'>
           <div className={Style.modal} />
           <div className={Style.modalContent}>
-            <h3>Deletar Tarefa</h3>
-            <p className={Style.text}>Tem certeza que você deseja deletar essa tarefa?</p>
+            <h3 data-testid="titulo-deletar-tarefa">Deletar Tarefa</h3>
+            <p data-testid="texto-deletar-tarefa" className={Style.text}>Tem certeza que você deseja deletar essa tarefa?</p>
             <div className={Style.buttonsBox}>
               <Button
                 classe='cancel'
@@ -74,6 +76,7 @@ const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: P
                   onDeleteTask();
                   onClose();
                 }}
+                dataTestid='btn-deletar-tarefa'
               >
                 Deletar
               </Button>
