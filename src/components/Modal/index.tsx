@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import Button from '../Button';
 import Style from './Modal.module.scss';
 
 interface Props {
-  classe: 'newTask' | 'deleteTask';
+  classe: 'newTask' | 'deleteTask' | 'newUser';
   onClose: () => void;
-  onAddTask?: (title: string) => void ;
+  onAddTask?: (title: string) => void;
   onDeleteTask?: () => void;
+  setUserName?: Dispatch<SetStateAction<string>>;
+  userName?: string;
+
 
 }
 
-const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: Props) => {
+const Modal = ({ classe, onClose, onAddTask = onClose, onDeleteTask = onClose, setUserName= onClose, userName = '' }: Props) => {
 
   const [title, setTitle] = useState<string>('');
 
@@ -28,10 +31,10 @@ const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: P
           }}>
             <div className={Style.inputBox}>
               <label htmlFor="title">Titulo</label>
-              <input 
-                type="text" 
-                id="title" 
-                name="title" 
+              <input
+                type="text"
+                id="title"
+                name="title"
                 placeholder='Digite'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -72,7 +75,7 @@ const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: P
               <Button
                 classe='delete'
                 type='button'
-                onClick={() => { 
+                onClick={() => {
                   onDeleteTask();
                   onClose();
                 }}
@@ -83,10 +86,44 @@ const Modal = ({ classe, onClose, onAddTask= onClose, onDeleteTask= onClose }: P
             </div>
           </div>
         </div>
-        :
-        <div className={Style.modalContainer}>
-          <div className={Style.modal} />
-        </div>
+        : classe === 'newUser' ?
+          <div className={Style.modalContainer}>
+            <div className={Style.modal} />
+            <div className={Style.modalContent}>
+              <h3>Olá, como se chama?</h3>
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                localStorage.setItem('user', userName);
+                onClose();
+              } }>
+              <div className={Style.inputBox}>
+              <label htmlFor="userName">Nome</label>
+              <input
+                type="text"
+                id="userName"
+                name="userName"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder='Digite o seu nome'
+              />
+              </div>
+              </form>
+              <div className={Style.buttonsBox}>
+                <Button
+                  classe='miniStandard'
+                  type='submit'
+                  dataTestid='btn-confirmar'
+                  onClick={() => {
+                    onClose();
+                    localStorage.setItem('user', userName);
+                  }}
+                >
+                  confirmar
+                </Button>
+              </div>
+            </div>
+          </div>
+          : null
   )
 
 
